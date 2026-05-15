@@ -146,8 +146,8 @@
   </head>
 
   <body>
-    <h1>🎯 TODAY'S TASKS</h1>
-    <div class="subtitle">Inspired by totally serious game show behaviour</div>
+    <h1>🎯 Welcome to Taksmaster</h1>
+    <div class="subtitle">You have been invited! To celebrate Thomas's 4th aniversary of reaching Irish Shore, we have will play a Taskmaster game. We will meet on the 31st of May. Your mission is to complete the individual and group tasks and gain points. There will be one winner and the throphy will be magnificent 🏆. Below you will find two tasks we need you to completed before the day of the game. Good luck! </div>
 
     <div class="task-box">
 
@@ -169,15 +169,14 @@
 
       <!-- TASK 2 -->
       <div id="task2">
-        <div class="task-title">TASK 2</div>
-        <p><span class="emoji">🎥</span>You need to record yourself doing something related to your chosen letter.</p>
-        <p class="hint">No overthinking. Maximum chaos encouraged.</p>
+        <div class="task-title">TASK 1 - part 2</div>
+        <p><span class="emoji">📝</span>Buy a gift for the taskmaster. You will receive 5 eur for this. The item's name needs to start with the letter you've chose earlier. You have two weeks. Your time starts nqw.</p>
       </div>
 
       <!-- TASK 3 -->
       <div id="task3">
-        <div class="task-title">TASK 3</div>
-        <p><span class="emoji">📝</span>Final reflection: explain what you did in Task 2 in one sentence.</p>
+        <div class="task-title">TASK 2</div>
+        <p><span class="emoji">🎥</span>Here is the second task: record yourself doing ......You have one week. Your time starts now.</p>
       </div>
 
     </div>
@@ -189,18 +188,15 @@
 
         if (!name) {
           document.getElementById("result").innerText =
-            "Even Taskmaster needs your name.";
+            "Please put in your name";
           return;
         }
 
         if (!letter.match(/^[a-zA-Z]$/)) {
           document.getElementById("result").innerText =
-            "One letter only. Greg would not approve.";
+            "Please put in your full name";
           return;
         }
-
-        document.getElementById("result").innerText =
-          "Accepted. Let the nonsense begin.";
 
         document.getElementById("task2").style.display = "block";
       }
