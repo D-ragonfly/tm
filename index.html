@@ -5,7 +5,6 @@
     <style>
       body { font-family: Arial; text-align: center; margin-top: 50px; }
       h1 { color: #333; }
-      li { margin: 10px 0; }
 
       .task-box {
         display: inline-block;
@@ -13,59 +12,62 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         margin-top: 10px;
+        width: 300px;
       }
 
       input {
         padding: 8px;
         margin: 5px;
-        width: 200px;
+        width: 90%;
       }
 
       button {
         padding: 8px 12px;
         cursor: pointer;
+        margin-top: 10px;
+      }
+
+      #part2 {
+        display: none;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dashed #aaa;
       }
 
       #result {
         margin-top: 10px;
         font-weight: bold;
       }
-
-      #task2 {
-        display: none; /* hidden at start */
-      }
     </style>
   </head>
 
   <body>
-    <h1>Welcome ro Taskmaster</h1>
+    <h1>Today's Task</h1>
 
-    <ul>
-      <li>
-        <div class="task-box">
-          <p><b>Task 1:</b> Enter your name and a letter</p>
+    <div class="task-box">
 
-          <input type="text" id="nameInput" placeholder="Enter your name" />
-          <input type="text" id="letterInput" placeholder="Enter a letter" maxlength="1" />
+      <!-- PART 1 -->
+      <div id="part1">
+        <p><b>Enter your name and a letter:</b></p>
 
-          <br>
+        <input type="text" id="nameInput" placeholder="Your name" />
+        <input type="text" id="letterInput" placeholder="A letter" maxlength="1" />
 
-          <button onclick="checkTask()">Submit</button>
+        <button onclick="submitPart1()">Submit</button>
 
-          <div id="result"></div>
-        </div>
-      </li>
+        <div id="result"></div>
+      </div>
 
-      <li id="task2">
-        <div class="task-box">
-          <p><b>Task 2:</b> Secret part 2 unlocked 🎉</p>
-          <p>Now buy something for the Taskmaster starting with this letter- you will get 5euros. You have two weeks until the day of the competition. Your task starts now.</p>
-        </div>
-      </li>
-    </ul>
+      <!-- PART 2 (hidden initially, no headline) -->
+      <div id="part2">
+        <p><b>Now complete the next step:</b></p>
+        <p id="dynamicTask"></p>
+      </div>
+
+    </div>
 
     <script>
-      function checkTask() {
+      function submitPart1() {
         const name = document.getElementById("nameInput").value.trim();
         const letter = document.getElementById("letterInput").value.trim();
 
@@ -80,11 +82,16 @@
         }
 
         document.getElementById("result").innerText =
-          "Nice, " + name + "! You chose: " + letter.toUpperCase();
+          "Welcome " + name + "!";
 
-        // 👇 unlock Task 2
-        document.getElementById("task2").style.display = "block";
+        // unlock Part 2
+        document.getElementById("part2").style.display = "block";
+
+        // optional: use their input in Part 2
+        document.getElementById("dynamicTask").innerText =
+          "Find 3 words that start with the letter '" + letter.toUpperCase() + "'.";
       }
     </script>
+
   </body>
 </html>
