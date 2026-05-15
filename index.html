@@ -6,13 +6,73 @@
       body { font-family: Arial; text-align: center; margin-top: 50px; }
       h1 { color: #333; }
       li { margin: 10px 0; }
+
+      .task-box {
+        display: inline-block;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-top: 10px;
+      }
+
+      input {
+        padding: 8px;
+        margin: 5px;
+        width: 200px;
+      }
+
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      #result {
+        margin-top: 10px;
+        font-weight: bold;
+      }
     </style>
   </head>
+
   <body>
     <h1>Today's Tasks</h1>
+
     <ul>
-      <li>Task 1: ???</li>
+      <li>
+        <div class="task-box">
+          <p><b>Task 1:</b> Enter your name and a letter</p>
+
+          <input type="text" id="nameInput" placeholder="Enter your name" />
+          <input type="text" id="letterInput" placeholder="Enter a letter" maxlength="1" />
+
+          <br>
+
+          <button onclick="checkTask()">Submit</button>
+
+          <div id="result"></div>
+        </div>
+      </li>
+
       <li>Task 2: ???</li>
     </ul>
+
+    <script>
+      function checkTask() {
+        const name = document.getElementById("nameInput").value.trim();
+        const letter = document.getElementById("letterInput").value.trim();
+
+        if (!name) {
+          document.getElementById("result").innerText = "Please enter your name.";
+          return;
+        }
+
+        if (!letter.match(/^[a-zA-Z]$/)) {
+          document.getElementById("result").innerText = "Please enter a single letter.";
+          return;
+        }
+
+        document.getElementById("result").innerText =
+          "Nice, " + name + "! You chose the letter: " + letter.toUpperCase();
+      }
+    </script>
   </body>
 </html>
