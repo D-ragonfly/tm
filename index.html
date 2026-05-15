@@ -3,8 +3,15 @@
   <head>
     <title>Game Tasks</title>
     <style>
-      body { font-family: Arial; text-align: center; margin-top: 50px; }
-      h1 { color: #333; }
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      h1 {
+        color: #333;
+      }
 
       .task-box {
         display: inline-block;
@@ -12,13 +19,13 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         margin-top: 10px;
-        width: 300px;
+        width: 350px;
       }
 
       input {
         padding: 8px;
         margin: 5px;
-        width: 90%;
+        width: 120px;
       }
 
       button {
@@ -27,47 +34,54 @@
         margin-top: 10px;
       }
 
-      #part2 {
-        display: none;
-        margin-top: 15px;
-        padding-top: 10px;
-        border-top: 1px dashed #aaa;
-      }
-
       #result {
         margin-top: 10px;
         font-weight: bold;
+      }
+
+      #task2 {
+        display: none;
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 2px dashed #aaa;
+        text-align: left;
       }
     </style>
   </head>
 
   <body>
-    <h1>Today's Task</h1>
+    <h1>Today's Tasks</h1>
 
     <div class="task-box">
 
-      <!-- PART 1 -->
-      <div id="part1">
-        <p><b>Enter your name and a letter:</b></p>
+      <!-- TASK 1 -->
+      <p><b>Task 1</b></p>
+      <p>Please type your name and choose a letter of the alphabet.</p>
 
-        <input type="text" id="nameInput" placeholder="Your name" />
-        <input type="text" id="letterInput" placeholder="A letter" maxlength="1" />
+      <label>Name:</label>
+      <input type="text" id="nameInput" />
 
-        <button onclick="submitPart1()">Submit</button>
+      <label>Letter:</label>
+      <input type="text" id="letterInput" maxlength="1" />
 
-        <div id="result"></div>
-      </div>
+      <br>
 
-      <!-- PART 2 (hidden initially, no headline) -->
-      <div id="part2">
-        <p><b>Now complete the next step:</b></p>
+      <button onclick="submitTask1()">Submit</button>
+
+      <div id="result"></div>
+
+      <!-- TASK 2 (hidden initially) -->
+      <div id="task2">
+        <p><b>Task 2:</b></p>
+        <p>You need to record yourself doing......</p>
+
         <p id="dynamicTask"></p>
       </div>
 
     </div>
 
     <script>
-      function submitPart1() {
+      function submitTask1() {
         const name = document.getElementById("nameInput").value.trim();
         const letter = document.getElementById("letterInput").value.trim();
 
@@ -82,14 +96,16 @@
         }
 
         document.getElementById("result").innerText =
-          "Welcome " + name + "!";
+          "Thanks " + name + "! Task 2 unlocked.";
 
-        // unlock Part 2
-        document.getElementById("part2").style.display = "block";
+        // show Task 2
+        document.getElementById("task2").style.display = "block";
 
-        // optional: use their input in Part 2
+        // optional dynamic content using letter
         document.getElementById("dynamicTask").innerText =
-          "Find 3 words that start with the letter '" + letter.toUpperCase() + "'.";
+          "Start your recording with something related to the letter '" +
+          letter.toUpperCase() +
+          "'.";
       }
     </script>
 
