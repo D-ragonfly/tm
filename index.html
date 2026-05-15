@@ -30,6 +30,10 @@
         margin-top: 10px;
         font-weight: bold;
       }
+
+      #task2 {
+        display: none; /* hidden at start */
+      }
     </style>
   </head>
 
@@ -52,7 +56,12 @@
         </div>
       </li>
 
-      <li>Task 2: ???</li>
+      <li id="task2">
+        <div class="task-box">
+          <p><b>Task 2:</b> Secret unlocked task 🎉</p>
+          <p>Now do something new here!</p>
+        </div>
+      </li>
     </ul>
 
     <script>
@@ -71,7 +80,10 @@
         }
 
         document.getElementById("result").innerText =
-          "Nice, " + name + "! You chose the letter: " + letter.toUpperCase();
+          "Nice, " + name + "! You chose: " + letter.toUpperCase();
+
+        // 👇 unlock Task 2
+        document.getElementById("task2").style.display = "block";
       }
     </script>
   </body>
