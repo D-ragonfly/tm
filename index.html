@@ -19,13 +19,14 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         margin-top: 10px;
-        width: 350px;
+        width: 380px;
+        text-align: left;
       }
 
       input {
         padding: 8px;
         margin: 5px;
-        width: 120px;
+        width: 150px;
       }
 
       button {
@@ -34,17 +35,16 @@
         margin-top: 10px;
       }
 
+      #task2 {
+        display: none;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px dashed #aaa;
+      }
+
       #result {
         margin-top: 10px;
         font-weight: bold;
-      }
-
-      #task2 {
-        display: none;
-        margin-top: 20px;
-        padding-top: 15px;
-        border-top: 2px dashed #aaa;
-        text-align: left;
       }
     </style>
   </head>
@@ -54,7 +54,7 @@
 
     <div class="task-box">
 
-      <!-- TASK 1 -->
+      <!-- TASK 1 (always visible) -->
       <p><b>Task 1</b></p>
       <p>Please type your name and choose a letter of the alphabet.</p>
 
@@ -70,12 +70,23 @@
 
       <div id="result"></div>
 
-      <!-- TASK 2 (hidden initially) -->
+      <!-- TASK 2 (hidden until Task 1 complete) -->
       <div id="task2">
-        <p><b>Task 2:</b></p>
-        <p>You need to record yourself doing......</p>
+        <p><b>Task 2</b></p>
+        <p>You need to record yourself doing something related to your chosen letter.</p>
 
-        <p id="dynamicTask"></p>
+        <button onclick="completeTask2()">I have completed Task 2</button>
+      </div>
+
+      <!-- TASK 3 (always visible) -->
+      <div id="task3">
+        <p><b>Task 3</b></p>
+        <p>Final reflection: write one sentence about what you did.</p>
+
+        <input type="text" id="task3Input" placeholder="Your answer..." />
+        <button onclick="submitTask3()">Submit Task 3</button>
+
+        <div id="task3Result"></div>
       </div>
 
     </div>
@@ -96,16 +107,27 @@
         }
 
         document.getElementById("result").innerText =
-          "Thanks " + name + "! Task 2 unlocked.";
+          "Thanks " + name + "! Task 2 is now unlocked.";
 
-        // show Task 2
+        // unlock Task 2 only
         document.getElementById("task2").style.display = "block";
+      }
 
-        // optional dynamic content using letter
-        document.getElementById("dynamicTask").innerText =
-          "Start your recording with something related to the letter '" +
-          letter.toUpperCase() +
-          "'.";
+      function completeTask2() {
+        alert("Task 2 marked as complete!");
+      }
+
+      function submitTask3() {
+        const answer = document.getElementById("task3Input").value.trim();
+
+        if (!answer) {
+          document.getElementById("task3Result").innerText =
+            "Please enter your reflection.";
+          return;
+        }
+
+        document.getElementById("task3Result").innerText =
+          "Task 3 submitted successfully 🎉";
       }
     </script>
 
