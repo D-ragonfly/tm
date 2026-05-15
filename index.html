@@ -19,7 +19,7 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         margin-top: 10px;
-        width: 520px; /* wider frame */
+        width: 520px;
         text-align: left;
       }
 
@@ -95,15 +95,10 @@
         <button onclick="completeTask2()">I have completed Task 2</button>
       </div>
 
-      <!-- TASK 3 -->
+      <!-- TASK 3 (now static) -->
       <div id="task3">
         <p><b>Task 3</b></p>
-        <p>Final reflection: write one sentence about what you did.</p>
-
-        <input type="text" id="task3Input" placeholder="Your answer..." />
-        <button onclick="submitTask3()">Submit Task 3</button>
-
-        <div id="task3Result"></div>
+        <p>Final reflection: explain what you did in Task 2 in one sentence.</p>
       </div>
 
     </div>
@@ -131,19 +126,6 @@
 
       function completeTask2() {
         alert("Task 2 completed!");
-      }
-
-      function submitTask3() {
-        const answer = document.getElementById("task3Input").value.trim();
-
-        if (!answer) {
-          document.getElementById("task3Result").innerText =
-            "Please enter your reflection.";
-          return;
-        }
-
-        document.getElementById("task3Result").innerText =
-          "Task 3 submitted 🎉";
       }
     </script>
 
