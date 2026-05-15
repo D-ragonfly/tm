@@ -15,18 +15,32 @@
 
       .task-box {
         display: inline-block;
-        padding: 15px;
+        padding: 20px;
         border: 1px solid #ccc;
         border-radius: 10px;
         margin-top: 10px;
-        width: 380px;
+        width: 520px; /* wider frame */
         text-align: left;
+      }
+
+      .input-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
       }
 
       input {
         padding: 8px;
-        margin: 5px;
-        width: 150px;
+      }
+
+      #nameInput {
+        flex: 1;
+      }
+
+      #letterInput {
+        width: 60px;
+        text-align: center;
       }
 
       button {
@@ -37,6 +51,12 @@
 
       #task2 {
         display: none;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 2px dashed #aaa;
+      }
+
+      #task3 {
         margin-top: 15px;
         padding-top: 15px;
         border-top: 2px dashed #aaa;
@@ -54,23 +74,20 @@
 
     <div class="task-box">
 
-      <!-- TASK 1 (always visible) -->
+      <!-- TASK 1 -->
       <p><b>Task 1</b></p>
       <p>Please type your name and choose a letter of the alphabet.</p>
 
-      <label>Name:</label>
-      <input type="text" id="nameInput" />
-
-      <label>Letter:</label>
-      <input type="text" id="letterInput" maxlength="1" />
-
-      <br>
+      <div class="input-row">
+        <input type="text" id="nameInput" placeholder="Name" />
+        <input type="text" id="letterInput" placeholder="A" maxlength="1" />
+      </div>
 
       <button onclick="submitTask1()">Submit</button>
 
       <div id="result"></div>
 
-      <!-- TASK 2 (hidden until Task 1 complete) -->
+      <!-- TASK 2 -->
       <div id="task2">
         <p><b>Task 2</b></p>
         <p>You need to record yourself doing something related to your chosen letter.</p>
@@ -78,7 +95,7 @@
         <button onclick="completeTask2()">I have completed Task 2</button>
       </div>
 
-      <!-- TASK 3 (always visible) -->
+      <!-- TASK 3 -->
       <div id="task3">
         <p><b>Task 3</b></p>
         <p>Final reflection: write one sentence about what you did.</p>
@@ -107,14 +124,13 @@
         }
 
         document.getElementById("result").innerText =
-          "Thanks " + name + "! Task 2 is now unlocked.";
+          "Thanks " + name + "! Task 2 unlocked.";
 
-        // unlock Task 2 only
         document.getElementById("task2").style.display = "block";
       }
 
       function completeTask2() {
-        alert("Task 2 marked as complete!");
+        alert("Task 2 completed!");
       }
 
       function submitTask3() {
@@ -127,7 +143,7 @@
         }
 
         document.getElementById("task3Result").innerText =
-          "Task 3 submitted successfully 🎉";
+          "Task 3 submitted 🎉";
       }
     </script>
 
