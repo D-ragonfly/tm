@@ -28,6 +28,11 @@
         align-items: center;
         gap: 10px;
         margin-top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .input-row label {
+        font-weight: bold;
       }
 
       input {
@@ -36,10 +41,11 @@
 
       #nameInput {
         flex: 1;
+        min-width: 180px;
       }
 
       #letterInput {
-        width: 60px;
+        width: 50px;
         text-align: center;
       }
 
@@ -79,7 +85,10 @@
       <p>Please type your name and choose a letter of the alphabet.</p>
 
       <div class="input-row">
-        <input type="text" id="nameInput" placeholder="Name" />
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter name" />
+
+        <label for="letterInput">Letter:</label>
         <input type="text" id="letterInput" placeholder="A" maxlength="1" />
       </div>
 
@@ -95,7 +104,7 @@
         <button onclick="completeTask2()">I have completed Task 2</button>
       </div>
 
-      <!-- TASK 3 (now static) -->
+      <!-- TASK 3 (always visible) -->
       <div id="task3">
         <p><b>Task 3</b></p>
         <p>Final reflection: explain what you did in Task 2 in one sentence.</p>
@@ -109,12 +118,14 @@
         const letter = document.getElementById("letterInput").value.trim();
 
         if (!name) {
-          document.getElementById("result").innerText = "Please enter your name.";
+          document.getElementById("result").innerText =
+            "Please enter your name.";
           return;
         }
 
         if (!letter.match(/^[a-zA-Z]$/)) {
-          document.getElementById("result").innerText = "Please enter a single letter.";
+          document.getElementById("result").innerText =
+            "Please enter a single letter.";
           return;
         }
 
